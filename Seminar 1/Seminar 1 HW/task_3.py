@@ -20,6 +20,8 @@ for i in range(FIRST_TRY, LAST_TRY):
     elif n < secret:
         turn = "Больше"
     else:
-        turn = "Победа!"
+        print("Победа!")
         break
     print(turn)
+else:
+    print("Попыток больше нет, вы проиграли.")
