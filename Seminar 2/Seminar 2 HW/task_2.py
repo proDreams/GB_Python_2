@@ -4,21 +4,30 @@
 from fractions import Fraction
 
 
+def gcd(n, d):
+    while d:
+        n, d = d, n % d
+    return n
+
+
+def check_eq(num, denum):
+    if num % denum == 0:
+        return num
+    gcd_num = gcd(num, denum)
+    return f"{num // gcd_num}/{denum // gcd_num}"
+
+
 def sum_frac(a, b, d_a, d_b):
     new_num_a, new_denum_a = a * d_b, d_a * d_b
     new_num_b, new_denum_b = b * d_a, d_b * d_a
     sum_num = new_num_a + new_num_b
-    if sum_num % new_denum_b == 0:
-        return sum_num
-    return f"{sum_num}/{new_denum_b}"
+    return check_eq(sum_num, new_denum_b)
 
 
 def prod_frac(a, b, d_a, d_b):
     num = a * b
     denum = d_a * d_b
-    if num % denum == 0:
-        return num
-    return f"{num}/{denum}"
+    return check_eq(num, denum)
 
 
 num_a, denum_a = map(int, input("Введите первую дробь вида a/b: ").split("/"))
