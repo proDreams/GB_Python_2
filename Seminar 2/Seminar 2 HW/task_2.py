@@ -11,9 +11,9 @@ def gcd(n, d):
 
 
 def check_eq(num, denum):
-    if num % denum == 0:
-        return num
     gcd_num = gcd(num, denum)
+    if num % denum == 0:
+        return num // gcd_num
     return f"{num // gcd_num}/{denum // gcd_num}"
 
 
