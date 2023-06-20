@@ -2,7 +2,6 @@
 # Функцию hex используйте для проверки своего результата.
 
 CONST_HEX = 16
-MAX_DIGIT = 9
 
 
 def dec_to_hex(num: int):
