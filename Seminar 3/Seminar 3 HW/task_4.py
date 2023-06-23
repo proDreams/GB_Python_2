@@ -4,7 +4,7 @@
 # *Верните все возможные варианты комплектации рюкзака.
 from itertools import combinations
 
-MAX_WEIGHT = 15
+MAX_WEIGHT = 20
 
 items = {
     "Палатка": 5,
@@ -29,10 +29,16 @@ for i in range(len(items)):
     temp = []
     items_combinations = combinations(items, i)
     for combination in items_combinations:
+        temp_dict = items.copy()
         weight = 0
         for item in combination:
             weight += items[item]
+            temp_dict.pop(item)
         if weight <= MAX_WEIGHT:
-            res.append(list(combination) + [weight])
+            min_weight_item = min(temp_dict.items(), key=lambda x: x[1])
+            if weight + min_weight_item[1] <= MAX_WEIGHT:
+                continue
+            else:
+                res.append(list(combination) + [weight])
 for comb in res:
     print(comb)
