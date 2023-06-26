@@ -11,3 +11,14 @@ print(*predefined_matrix, sep="\n")
 flip_matrix(predefined_matrix)
 print()
 print(*predefined_matrix, sep="\n")
+
+
+
+#############
+# забавный вариант через zip
+predefined_matrix2 = [[1, 2, 3],
+                     [4, 5, 6],
+                     [7, 8, 9]]
+print(*predefined_matrix2, sep="\n")
+print()
+print(*zip(*predefined_matrix2), sep="\n")
