@@ -16,6 +16,7 @@ print(*predefined_matrix, sep="\n")
 
 #############
 # забавный вариант через zip
+print()
 predefined_matrix2 = [[1, 2, 3],
                      [4, 5, 6],
                      [7, 8, 9]]
