@@ -17,7 +17,7 @@ def check_rich(bal, op, op_list):
         nalog = (bal - RICH_VALUE) // RICH_NALOG
         op_list.append((op, 'Налог на богатство', nalog))
         bal -= nalog
-
+    return bal
 
 def check_input(message):
     while True:
@@ -35,12 +35,12 @@ def increase(bal, op, op_list):
     bal += inc
     op_list.append((op, 'пополнение', inc))
     op += 1
-    check_rich(bal, op, op_list)
+    bal = check_rich(bal, op, op_list)
     return bal, op
 
 
 def decrease(bal, op, op_list):
-    check_rich(bal, op, op_list)
+    bal = check_rich(bal, op, op_list)
     dec = check_input("Введите количество для снятия: ")
     percent = dec * 0.015
     if percent < MIN_NALOG:
