@@ -7,4 +7,5 @@ import sys
 
 from task_7_module import date_
 
-print(date_.check_date(*sys.argv[1:]))
+# print(date_.check_date('01.02.2000'))
+print(date_.check_date(sys.argv[1]))
