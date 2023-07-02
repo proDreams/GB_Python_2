@@ -1,18 +1,40 @@
-import time
 from random import randint
 
+# ~0.19c на проверку
+# def check_queen_positions(positions: list):
+#     board = [['.' for _ in range(8)] for _ in range(8)]
+#     board[positions[0][0]][positions[0][1]] = 'Q'
+#     for row, col in positions[1:]:
+#         if 'Q' in board[row]:
+#             return False
+#         elif 'Q' in [i[col] for i in board]:
+#             return False
+#         elif 'Q' in [board[i][j] for i in range(8) for j in range(8) if abs(i - row) == abs(j - col)]:
+#             return False
+#         board[row][col] = 'Q'
+#     return positions
 
+# ~0.068с на проверку
 def check_queen_positions(positions: list):
-    board = [['.' for _ in range(8)] for _ in range(8)]
-    board[positions[0][0]][positions[0][1]] = 'Q'
-    for row, col in positions[1:]:
-        if 'Q' in board[row]:
-            return False
-        elif 'Q' in [i[col] for i in board]:
-            return False
-        elif 'Q' in [board[i][j] for i in range(8) for j in range(8) if abs(i - row) == abs(j - col)]:
-            return False
-        board[row][col] = 'Q'
+    for row, col in positions:
+        r, c = row, col
+        for rows, cols in positions:
+            if row == rows and col != cols:
+                return False
+        for rows, cols in positions:
+            if row != rows and col == cols:
+                return False
+        while r < 8 or c < 8:
+            if (r + 1, c + 1) in positions:
+                return False
+            r += 1
+            c += 1
+        r, c = row, col
+        while 0 <= r < 8 or 0 <= c < 8:
+            if (r + 1, c - 1) in positions:
+                return False
+            r += 1
+            c -= 1
     return positions
 
 
@@ -27,10 +49,8 @@ def generate_random_positions():
 
 def generate_all():
     success = []
-    start_time = time.time()
     numbers_a = [i for i in range(8)]
     for a in numbers_a:
-        variants = [(0, a)]
         numbers_b = numbers_a[:]
         numbers_b.remove(a)
         for b in numbers_b:
@@ -68,5 +88,4 @@ def generate_all():
                                                                         (6, g), (7, h)]
                                                             if check_queen_positions(variants):
                                                                 success.append(variants)
-    print("--- %s seconds ---" % (time.time() - start_time))
     return success
