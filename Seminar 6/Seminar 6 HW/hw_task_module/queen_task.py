@@ -1,14 +1,20 @@
 from random import randint
 
+
 # ~0.13c на проверку
-# def check_queen_positions(positions: list):
-#     board = [['.' for _ in range(8)] for _ in range(8)]
-#     board[positions[0][0]][positions[0][1]] = 'Q'
-#     for row, col in positions[1:]:
-#         if 'Q' in [board[i][j] for i in range(8) for j in range(8) if abs(i - row) == abs(j - col)]:
-#             return False
-#         board[row][col] = 'Q'
-#     return positions
+def check_queen_position(positions: list):
+    board = [['.' for _ in range(8)] for _ in range(8)]
+    board[positions[0][0]][positions[0][1]] = 'Q'
+    for row, col in positions[1:]:
+        if 'Q' in board[row]:
+            return False
+        elif 'Q' in [i[col] for i in board]:
+            return False
+        elif 'Q' in [board[i][j] for i in range(8) for j in range(8) if abs(i - row) == abs(j - col)]:
+            return False
+        board[row][col] = 'Q'
+    return positions
+
 
 # ~0.045с на проверку
 # def check_queen_positions(positions: list):
@@ -30,9 +36,10 @@ from random import randint
 # ~0.017с на проверку
 def check_queen_positions(positions: list):
     for k in range(len(positions)):
-        if any([abs(i - positions[k][0]) == abs(j - positions[k][1]) for i, j in positions[k+1:]]):
-             return False
+        if any([abs(i - positions[k][0]) == abs(j - positions[k][1]) for i, j in positions[k + 1:]]):
+            return False
     return True
+
 
 # 0.023с Логика от Андрея + мой генератор
 # def check_queen_positions(positions: list):
