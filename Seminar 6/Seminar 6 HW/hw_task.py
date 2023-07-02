@@ -29,7 +29,8 @@ import time
 # print("--- %s seconds ---" % (time.time() - start_time))
 # print(*res, sep='\n')
 
-# 0.86с
+# 0.86с первый вариант, можно посмотреть в предыдущем коммите.
+# 0.19с новый вариант =)
 start_time = time.time()
 for i, res in enumerate(queen_task.generate_all(), start=1):
     print(f"{i}: {res}")

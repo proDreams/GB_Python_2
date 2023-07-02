@@ -27,36 +27,46 @@ def generate_random_positions():
 
 def generate_all():
     success = []
-    variants = []
     start_time = time.time()
     numbers_a = [i for i in range(8)]
     for a in numbers_a:
+        variants = [(0, a)]
         numbers_b = numbers_a[:]
         numbers_b.remove(a)
         for b in numbers_b:
-            numbers_c = numbers_b[:]
-            numbers_c.remove(b)
-            for c in numbers_c:
-                numbers_d = numbers_c[:]
-                numbers_d.remove(c)
-                for d in numbers_d:
-                    numbers_e = numbers_d[:]
-                    numbers_e.remove(d)
-                    for e in numbers_e:
-                        numbers_f = numbers_e[:]
-                        numbers_f.remove(e)
-                        for f in numbers_f:
-                            numbers_g = numbers_f[:]
-                            numbers_g.remove(f)
-                            for g in numbers_g:
-                                numbers_h = numbers_g[:]
-                                numbers_h.remove(g)
-                                for h in numbers_h:
-                                    variant = [(0, a), (1, b), (2, c), (3, d), (4, e), (5, f),
-                                               (6, g), (7, h)]
-                                    variants.append(variant)
+            variants = [(0, a), (1, b)]
+            if check_queen_positions(variants):
+                numbers_c = numbers_b[:]
+                numbers_c.remove(b)
+                for c in numbers_c:
+                    variants = [(0, a), (1, b), (2, c)]
+                    if check_queen_positions(variants):
+                        numbers_d = numbers_c[:]
+                        numbers_d.remove(c)
+                        for d in numbers_d:
+                            variants = [(0, a), (1, b), (2, c), (3, d)]
+                            if check_queen_positions(variants):
+                                numbers_e = numbers_d[:]
+                                numbers_e.remove(d)
+                                for e in numbers_e:
+                                    variants = [(0, a), (1, b), (2, c), (3, d), (4, e)]
+                                    if check_queen_positions(variants):
+                                        numbers_f = numbers_e[:]
+                                        numbers_f.remove(e)
+                                        for f in numbers_f:
+                                            variants = [(0, a), (1, b), (2, c), (3, d), (4, e), (5, f)]
+                                            if check_queen_positions(variants):
+                                                numbers_g = numbers_f[:]
+                                                numbers_g.remove(f)
+                                                for g in numbers_g:
+                                                    variants = [(0, a), (1, b), (2, c), (3, d), (4, e), (5, f), (6, g)]
+                                                    if check_queen_positions(variants):
+                                                        numbers_h = numbers_g[:]
+                                                        numbers_h.remove(g)
+                                                        for h in numbers_h:
+                                                            variants = [(0, a), (1, b), (2, c), (3, d), (4, e), (5, f),
+                                                                        (6, g), (7, h)]
+                                                            if check_queen_positions(variants):
+                                                                success.append(variants)
     print("--- %s seconds ---" % (time.time() - start_time))
-    for var in variants:
-        if check_queen_positions(var):
-            success.append(var)
     return success
