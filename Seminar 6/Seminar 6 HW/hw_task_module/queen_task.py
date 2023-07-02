@@ -1,26 +1,19 @@
 from random import randint
 
-# ~0.19c на проверку
+# ~0.17c на проверку
 # def check_queen_positions(positions: list):
 #     board = [['.' for _ in range(8)] for _ in range(8)]
 #     board[positions[0][0]][positions[0][1]] = 'Q'
 #     for row, col in positions[1:]:
-#         if 'Q' in board[row]:
-#             return False
-#         elif 'Q' in [i[col] for i in board]:
-#             return False
-#         elif 'Q' in [board[i][j] for i in range(8) for j in range(8) if abs(i - row) == abs(j - col)]:
+#         if 'Q' in [board[i][j] for i in range(8) for j in range(8) if abs(i - row) == abs(j - col)]:
 #             return False
 #         board[row][col] = 'Q'
 #     return positions
 
-# ~0.062с на проверку
+# ~0.056с на проверку
 def check_queen_positions(positions: list):
     for row, col in positions:
         r, c = row, col
-        for rows, cols in positions:
-            if row != rows and col == cols:
-                return False
         while r < 8 or c < 8:
             if (r + 1, c + 1) in positions:
                 return False
@@ -32,7 +25,22 @@ def check_queen_positions(positions: list):
                 return False
             r += 1
             c -= 1
-    return positions
+    return True
+
+# 0.032с Логика от Андрея + мой генератор
+# def check_queen_positions(positions: list):
+#     queens = [10 * row + col for row, col in positions]
+#     for i in range(len(queens)):
+#         for j in range(i + 1, len(queens)):
+#             if ((queens[j] // 10 > queens[i] // 10 and queens[j] % 10 > queens[i] % 10) or
+#                 (queens[i] // 10 > queens[j] // 10 and queens[i] % 10 > queens[j] % 10)) and \
+#                     (queens[j] - queens[i]) % 11 == 0:  # проверка на диагональ "вправо-вниз"
+#                 return False
+#             if ((queens[j] // 10 > queens[i] // 10 and queens[j] % 10 < queens[i] % 10) or
+#                 (queens[i] // 10 > queens[j] // 10 and queens[i] % 10 < queens[j] % 10)) and \
+#                     (queens[j] - queens[i]) % 9 == 0:  # проверка на диагональ "влево-вниз"
+#                 return False
+#     return positions
 
 
 def generate_random_positions():
