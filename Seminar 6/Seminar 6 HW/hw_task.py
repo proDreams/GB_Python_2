@@ -31,7 +31,7 @@ import time
 
 # 0.86с первый вариант, можно посмотреть в предыдущем коммите.
 # 0.19с новый вариант =)
-# 0.068с следующий новый вариант)
+# 0.062с следующий новый вариант)
 start_time = time.time()
 for i, res in enumerate(queen_task.generate_all(), start=1):
     print(f"{i}: {res}")

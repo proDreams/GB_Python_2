@@ -14,13 +14,10 @@ from random import randint
 #         board[row][col] = 'Q'
 #     return positions
 
-# ~0.068с на проверку
+# ~0.062с на проверку
 def check_queen_positions(positions: list):
     for row, col in positions:
         r, c = row, col
-        for rows, cols in positions:
-            if row == rows and col != cols:
-                return False
         for rows, cols in positions:
             if row != rows and col == cols:
                 return False
