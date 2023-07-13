@@ -49,7 +49,7 @@ def create_files(result_directory, dct, lst):
         open(directory / 'result.csv', "w", newline='', encoding="utf-8") as c,
         open(directory / 'result.pickle', "wb") as p
     ):
-        json.dump(dct, j)
+        json.dump(dct, j, ensure_ascii=False)
         pickle.dump(dct, p)
         csv_writer = csv.writer(c)
         csv_writer.writerow(['name', 'parent', 'size', 'type'])

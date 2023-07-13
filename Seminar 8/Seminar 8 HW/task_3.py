@@ -8,6 +8,21 @@
 # Для каждого объекта укажите файл это или директория. Для файлов сохраните его размер в байтах, а для директорий
 # размер файлов в ней с учётом всех вложенных файлов и директорий. Соберите из созданных на уроке и в рамках
 # домашнего задания функций пакет для работы с файлами разных форматов.
-from task_3_module import work_with_files as wwf
+from statistics import mean
 
-wwf.generate_dict('C:\\Users\\proDream\\PycharmProjects\\GB_Python_2\\Seminar 8', './out')
+from task_3_module import work_with_files as wwf, another_var as anw
+import time
+
+tries = []
+for _  in range(10):
+    start_time = time.time()
+    wwf.generate_dict('D:\\Курсы', './out')
+    tries.append(time.time() - start_time)
+print("Мой вариант: %s секунд" % (mean(tries)))
+
+tries = []
+for _  in range(10):
+    start_time = time.time()
+    anw.folders_info('D:\\Курсы', './out')
+    tries.append(time.time() - start_time)
+print("Вариант Анатолия: %s секунд" % (mean(tries)))
