@@ -6,10 +6,10 @@ class Animal:
         self.age = age
         self.name = name
 
-    def get_age(self, age):
+    def get_age(self):
         return self.age
 
-    def get_name(self, name):
+    def get_name(self):
         return self.name
 
 
@@ -52,10 +52,11 @@ class Mammals(Animal):
         return f'Имя: {self.name}\nВозраст: {self.age}\nВес: {self.weight}\nТип: {self.type}\n'
 
 
-f = Fish('Nemo', 2, 100)
-b = Bird('Kesha', 5, 4)
-m = Mammals('Pumba', 10, 105)
+if __name__ == '__main__':
+    f = Fish('Nemo', 2, 100)
+    b = Bird('Kesha', 5, 4)
+    m = Mammals('Pumba', 10, 105)
 
-print(f)
-print(b)
-print(m)
+    print(f)
+    print(b)
+    print(m)
