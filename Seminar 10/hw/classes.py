@@ -14,42 +14,42 @@ class Animal:
 
 
 class Fish(Animal):
-    def __init__(self, name, age, depth):
+    def __init__(self, name, age, feature):
         super().__init__(name, age)
-        self.depth = depth
+        self.feature = feature
         self.type = self.check_type()
 
     def check_type(self):
-        return ("Мелководная", "Глубоководная")[self.depth > 1000]
+        return ("Мелководная", "Глубоководная")[self.feature > 1000]
 
     def __str__(self):
-        return f'Имя: {self.name}\nВозраст: {self.age}\nГлубина: {self.depth}\nТип: {self.type}\n'
+        return f'Имя: {self.name}\nВозраст: {self.age}\nГлубина: {self.feature}\nТип: {self.type}\n'
 
 
 class Bird(Animal):
-    def __init__(self, name, age, wings):
+    def __init__(self, name, age, feature):
         super().__init__(name, age)
-        self.wings = wings
+        self.feature = feature
         self.type = self.check_type()
 
     def check_type(self):
-        return ("Небольшой размах", "Большой размах")[self.wings > 3]
+        return ("Небольшой размах", "Большой размах")[self.feature > 3]
 
     def __str__(self):
-        return f'Имя: {self.name}\nВозраст: {self.age}\nРазмах крыльев: {self.wings}\nТип: {self.type}\n'
+        return f'Имя: {self.name}\nВозраст: {self.age}\nРазмах крыльев: {self.feature}\nТип: {self.type}\n'
 
 
 class Mammals(Animal):
-    def __init__(self, name, age, weight):
+    def __init__(self, name, age, feature):
         super().__init__(name, age)
-        self.weight = weight
+        self.feature = feature
         self.type = self.check_type()
 
     def check_type(self):
-        return ("Мелкий", "Крупный")[self.weight > 100]
+        return ("Мелкий", "Крупный")[self.feature > 100]
 
     def __str__(self):
-        return f'Имя: {self.name}\nВозраст: {self.age}\nВес: {self.weight}\nТип: {self.type}\n'
+        return f'Имя: {self.name}\nВозраст: {self.age}\nВес: {self.feature}\nТип: {self.type}\n'
 
 
 if __name__ == '__main__':

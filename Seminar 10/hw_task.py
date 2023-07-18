@@ -3,7 +3,8 @@
 # Класс принимает тип животного (название одного из созданных классов) и параметры для этого типа.
 # Внутри класса создайте экземпляр на основе переданного типа и верните его из класса-фабрики.
 
-from hw import fabric_class as f
+from hw import fabric_class as f, classes as c
 
-fish = f.Fabric().create_obj('fish', 'Nemo', 3, 500)
-print(fish)
+fish = c.Fish('Nemo', 3, 500)
+new_fish = f.Fabric(fish).do_copy()
+print(new_fish)
