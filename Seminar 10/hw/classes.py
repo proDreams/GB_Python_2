@@ -14,10 +14,10 @@ class Animal:
 
 
 class Fish(Animal):
-    def __init__(self, name, age, feature):
+    def __init__(self, name, age, feature, type=None):
         super().__init__(name, age)
         self.feature = feature
-        self.type = self.check_type()
+        self.type = type or self.check_type()
 
     def check_type(self):
         return ("Мелководная", "Глубоководная")[self.feature > 1000]
@@ -27,10 +27,10 @@ class Fish(Animal):
 
 
 class Bird(Animal):
-    def __init__(self, name, age, feature):
+    def __init__(self, name, age, feature, type=None):
         super().__init__(name, age)
         self.feature = feature
-        self.type = self.check_type()
+        self.type = type or self.check_type()
 
     def check_type(self):
         return ("Небольшой размах", "Большой размах")[self.feature > 3]
@@ -40,10 +40,10 @@ class Bird(Animal):
 
 
 class Mammals(Animal):
-    def __init__(self, name, age, feature):
+    def __init__(self, name, age, feature, type=None):
         super().__init__(name, age)
         self.feature = feature
-        self.type = self.check_type()
+        self.type = type or self.check_type()
 
     def check_type(self):
         return ("Мелкий", "Крупный")[self.feature > 100]
