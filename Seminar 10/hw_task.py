@@ -6,5 +6,5 @@
 from hw import fabric_class as f, classes as c
 
 fish = c.Fish('Nemo', 3, 500)
-new_fish = f.Fabric(fish.__class__, 'Nemo1', 3, 500).do_copy()
+new_fish = f.Fabric(c.Fish, 'Nemo1', 3, 500).do_copy()
 print(new_fish)
