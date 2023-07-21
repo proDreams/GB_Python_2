@@ -35,7 +35,8 @@ class Matrix:
             new_matrix = []
             for row in range(len(self.matrix)):
                 new_matrix.append([*map(lambda x: sum(x), zip(self.matrix[row], other.matrix[row]))])
-            return Matrix(new_matrix)
+            # return Matrix(new_matrix)
+            return new_matrix
         # Так хотелось добавить сюда raise
         return False
 
@@ -52,7 +53,8 @@ class Matrix:
                 for j in range(len(other.matrix[0])):
                     for k in range(len(self.matrix[0])):
                         new_matrix[i][j] += self.matrix[i][k] * other.matrix[k][j]
-            return Matrix(new_matrix)
+            # return Matrix(new_matrix)
+            return new_matrix
         # Сюда тоже
         return False
 
