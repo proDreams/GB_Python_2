@@ -9,8 +9,8 @@ class Student:
     last_name = des.CheckName()
     middle_name = des.CheckName()
     subject = des.CheckSubject('students.csv')
-    subject_score = des.CheckScores(min_sub_score=2, max_sub_score=5)
-    test_score = des.CheckScores(min_test_score=0, max_test_score=100)
+    subject_score = des.CheckSubjectScore(min_sub_score=2, max_sub_score=5)
+    test_score = des.CheckTesttScore(min_test_score=0, max_test_score=100)
     subjects = []
 
     def __init__(self, first_name, last_name, middle_name, subject, subject_score, test_score):
