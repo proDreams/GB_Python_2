@@ -3,6 +3,8 @@
 # Напишите 3-7 тестов unittest для данного класса.
 import unittest
 
+import pytest
+
 from task_5 import Rectangle
 
 
@@ -11,10 +13,13 @@ class TestRectangle(unittest.TestCase):
         self.rectangle = Rectangle(3, 5)
 
     def test_per(self):
-        self.assertEqual(Rectangle(3, 5).per(), self.rectangle.per())
+        self.assertEqual(Rectangle(3, 5).per(), 16)
 
     def test_square(self):
-        self.assertEqual(Rectangle(3, 5).square(), self.rectangle.square())
+        self.assertEqual(Rectangle(3, 5).square(), 15)
 
     def test_equal(self):
         self.assertEqual(Rectangle(3, 5), self.rectangle)
+
+if __name__ == "__main__":
+    pytest.main(["-v"])

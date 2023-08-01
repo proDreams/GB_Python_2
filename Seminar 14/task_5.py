@@ -27,3 +27,8 @@ class Rectangle:
 
     def __eq__(self, other):
         return self.a == other.a and self.b == other.b
+
+if __name__ == '__main__':
+    r = Rectangle(3, 5)
+    print(r.per())
+    print(r.square())
