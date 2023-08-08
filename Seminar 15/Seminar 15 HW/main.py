@@ -31,7 +31,7 @@ file_list = os.listdir(path)
 for elem in file_list:
     temp_path = path / elem
     name = temp_path.stem
-    suffix = temp_path.suffix or 'directory not have extension'
+    suffix = temp_path.suffix or 'directory does not have extension'
     directory = temp_path.is_dir()
     parent_dir = temp_path.parent.stem
     logger.info(f"file/dir name: {name}, suffix: {suffix}, directory: {directory}, parent_dir: {parent_dir}")
